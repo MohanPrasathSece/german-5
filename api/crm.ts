@@ -93,18 +93,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(502).json({ error: "Failed to submit to CRM. Please try again." });
     }
 
-    // Increment Lead Dashboard
-    try {
-      const dashboardPayload = { website: "Aegis Crypto", type: "contact", name, email };
-      console.log('[CONTACT] Lead Dashboard payload:', dashboardPayload);
-      const dashResp = await fetch("https://lead-dashboard-orcin.vercel.app/api/increment", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dashboardPayload)
-      });
-      console.log('[CONTACT] Lead Dashboard response status:', dashResp.status);
-    } catch (dashErr) {
-      console.error("[CONTACT ERROR] Dashboard tracking failed", dashErr);
+    // Increment Lead Dashboard ONLY if accepted and not duplicate
+    if (crmResponse.ok && !isDuplicateError) {
+      try {
+        const dashboardPayload = { website: "Aegis Crypto", type: "contact", name, email };
+        console.log('[CONTACT] Lead Dashboard payload:', dashboardPayload);
+        const dashResp = await fetch("https://lead-dashboard-orcin.vercel.app/api/increment", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dashboardPayload)
+        });
+        console.log('[CONTACT] Lead Dashboard response status:', dashResp.status);
+      } catch (dashErr) {
+        console.error("[CONTACT ERROR] Dashboard tracking failed", dashErr);
+      }
+    } else {
+      console.log('[CONTACT] CRM did not accept as a new lead. Skipping Dashboard increment.');
     }
 
     return res.status(200).json({ success: true, isDuplicate: isDuplicateError });

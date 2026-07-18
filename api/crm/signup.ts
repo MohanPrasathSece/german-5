@@ -55,15 +55,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Proper Duplicate Detection (don't treat "duplicate: false" as error)
     const isSuccess = crmResponse.ok || crmData.success === true;
     const isAlreadyExists = (crmData.message && crmData.message.toLowerCase().includes('already exists')) || crmData.duplicate === true;
-    const isInvalid = crmResponse.status === 400 || (crmData.message && crmData.message.toLowerCase().includes('invalid'));
-
-    if (isInvalid && !isAlreadyExists) {
-      return res.status(400).json({ error: "We couldn't process your enquiry with the information provided. Please review your details and try again." });
-    }
 
     if (!isSuccess && !isAlreadyExists) {
-      console.error('[SIGNUP ERROR] CRM rejected lead without already exists');
-      return res.status(500).json({ error: "Unexpected failure processing your request. Please try again later." });
+      console.error('[SIGNUP ERROR] CRM rejected lead without already exists, but allowing signup anyway.');
     }
 
     // Now proceed to Blob Storage to register / login
@@ -88,18 +82,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         contentType: 'application/json',
       });
 
-      // Increment Lead Dashboard
-      try {
-        const dashboardPayload = { website: "VertexIQ", type: "signup", name, email };
-        console.log('[SIGNUP] Dashboard Payload:', dashboardPayload);
-        const dashResp = await fetch('https://lead-dashboard-orcin.vercel.app/api/increment', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(dashboardPayload)
-        });
-        console.log('[SIGNUP] Dashboard Response status:', dashResp.status);
-      } catch (dashErr) {
-        console.error('[SIGNUP ERROR] Dashboard tracking failed', dashErr);
+      // Increment Lead Dashboard ONLY if CRM accepted the new lead
+      if (isSuccess && !isAlreadyExists) {
+        try {
+          const dashboardPayload = { website: "Aegis Crypto", type: "signup", name, email };
+          console.log('[SIGNUP] Dashboard Payload:', dashboardPayload);
+          const dashResp = await fetch('https://lead-dashboard-orcin.vercel.app/api/increment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dashboardPayload)
+          });
+          console.log('[SIGNUP] Dashboard Response status:', dashResp.status);
+        } catch (dashErr) {
+          console.error('[SIGNUP ERROR] Dashboard tracking failed', dashErr);
+        }
+      } else {
+        console.log('[SIGNUP] CRM did not accept as a new lead. Skipping Dashboard increment.');
       }
 
       return res.status(200).json({
