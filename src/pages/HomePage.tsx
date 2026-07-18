@@ -83,36 +83,6 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center grain overflow-hidden">
-      {/* Ambient glows */}
-      <div className="pointer-events-none absolute -left-[15%] top-[10%] h-[700px] w-[700px] rounded-full bg-gold/[0.07] blur-[150px]" />
-      <div className="pointer-events-none absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-emerald-500/[0.04] blur-[120px]" />
-
-      {/* Background candlestick chart */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 flex items-end gap-[3px] px-6 pb-0 opacity-[0.12]">
-        {candles.map((candle, i) => (
-          <motion.div
-            key={i}
-            className="flex-1 flex flex-col items-center justify-end"
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-            style={{ transformOrigin: 'bottom', height: `${candle.h}%` }}
-          >
-            <div className={`w-[2px] ${candle.green ? 'bg-emerald-400' : 'bg-red-400'}`} style={{ height: `${candle.top}%` }} />
-            <motion.div
-              className={`w-full max-w-[20px] rounded-[2px] ${candle.green ? 'bg-emerald-400' : 'bg-red-400'}`}
-              style={{ height: `${candle.body}%`, minHeight: 6 }}
-              animate={{ opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 3 + Math.random() * 2, repeat: Infinity, delay: i * 0.15 }}
-            />
-            <div className={`w-[2px] flex-1 ${candle.green ? 'bg-emerald-400' : 'bg-red-400'}`} />
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Bottom gradient fade */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent z-[1]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink to-transparent z-[1]" />
 
       <div className="relative z-10 mx-auto max-w-[1400px] w-full px-6 py-32 sm:py-40">
         <div className="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
