@@ -1,14 +1,18 @@
 import { motion } from "motion/react";
-import { ArrowRight, TrendingUp, Shield, Activity, BarChart2, Briefcase, Zap } from "lucide-react";
+import { ArrowRight, Shield, Lock, Briefcase, AlertCircle } from "lucide-react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { useAuth } from "@/contexts/AuthContext";
 import { Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function DashboardPage() {
   const { user, isLoading } = useAuth();
   const [formState, setFormState] = useState({ name: "", email: "", message: "", status: "idle", error: "" });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!isLoading && !user) {
     return <Navigate to="/" replace />;
@@ -36,50 +40,43 @@ export default function DashboardPage() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-gold"></span>
               </span>
-              <span className="text-xs font-medium tracking-wide text-gold">ACTIVE PORTFOLIO</span>
+              <span className="text-xs font-medium tracking-wide text-gold">SECURE PORTAL ACTIVE</span>
             </div>
             <h1 className="font-display text-4xl font-light tracking-tight md:text-6xl lg:text-7xl">
-              Welcome back, <br className="hidden md:block" />
-              <span className="italic text-white/70">let's grow your wealth.</span>
+              Protecting and scaling <br className="hidden md:block" />
+              <span className="italic text-white/70">your digital wealth.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-white/50 leading-relaxed">
-              You are now part of our exclusive institutional allocation. Discover exactly how our proprietary algorithms and staking pools work tirelessly to generate consistent yield for your portfolio.
+              Welcome to your private institutional allocation portal. We utilize highly secure, proprietary frameworks to systematically protect your capital while exposing it to curated, compounded growth strategies.
             </p>
           </motion.div>
 
           {/* Grid Layout */}
           <div className="grid gap-6 md:grid-cols-3">
-            {/* Main Stats Card */}
+            {/* FOMO / Urgency Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 md:col-span-2 md:p-12"
+              className="group relative overflow-hidden rounded-[2rem] border border-gold/40 bg-gold/5 p-8 md:col-span-2 md:p-12 flex flex-col md:flex-row items-center gap-8 justify-between"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
               
-              <div className="relative z-10 flex flex-col h-full justify-between">
-                <div>
-                  <h3 className="text-xl font-light md:text-2xl">Algorithmic Arbitrage</h3>
-                  <p className="mt-4 max-w-md text-sm text-white/50 leading-relaxed">
-                    Our high-frequency trading bots scan 40+ centralized and decentralized exchanges simultaneously. By exploiting micro-inefficiencies in token prices, we generate risk-averse yield.
-                  </p>
+              <div className="relative z-10 max-w-lg">
+                <div className="flex items-center gap-2 text-gold mb-4">
+                  <AlertCircle className="size-5" />
+                  <span className="text-sm font-semibold tracking-wider uppercase">Limited Availability</span>
                 </div>
-
-                <div className="mt-12 grid grid-cols-2 gap-8 md:flex md:gap-16">
-                  <div>
-                    <div className="text-sm text-white/40 mb-1">Target APY</div>
-                    <div className="text-3xl font-light text-gold">14.2%</div>
-                  </div>
-                  <div>
-                    <div className="text-sm text-white/40 mb-1">Win Rate</div>
-                    <div className="text-3xl font-light">98.4%</div>
-                  </div>
-                  <div>
-                    <div className="text-sm text-white/40 mb-1">Risk Profile</div>
-                    <div className="text-3xl font-light text-green-400">Low</div>
-                  </div>
-                </div>
+                <h3 className="text-2xl font-light md:text-3xl mb-4 text-white">
+                  Q3 Allocation Window Closing
+                </h3>
+                <p className="text-sm text-white/70 leading-relaxed mb-6">
+                  To ensure maximum capital efficiency and uncompromising security for our current partners, we strictly cap our total managed allocation. Once our current capacity threshold is reached, new deposits will be paused indefinitely. Secure your position before the remaining spots are filled.
+                </p>
+                <button className="group inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-ink transition-all hover:scale-105">
+                  Secure Your Allocation
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </button>
               </div>
             </motion.div>
 
@@ -88,14 +85,14 @@ export default function DashboardPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8"
+              className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 flex flex-col justify-center"
             >
               <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.05] text-gold transition-transform duration-500 group-hover:scale-110">
-                <Activity className="size-6" />
+                <Shield className="size-6" />
               </div>
-              <h3 className="mb-3 text-xl font-light">Deep Liquidity Provision</h3>
+              <h3 className="mb-3 text-xl font-light">Uncompromising Security</h3>
               <p className="text-sm text-white/50 leading-relaxed">
-                Your capital is pooled into exclusive liquidity pairs on top-tier DEXs. We capture trading fees 24/7, compounding your returns automatically.
+                Your assets are protected by enterprise-grade cold storage and multi-signature verification, ensuring military-grade protection against all external threats.
               </p>
             </motion.div>
 
@@ -107,11 +104,11 @@ export default function DashboardPage() {
               className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8"
             >
               <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.05] text-white transition-transform duration-500 group-hover:scale-110">
-                <Shield className="size-6" />
+                <Lock className="size-6" />
               </div>
-              <h3 className="mb-3 text-xl font-light">Institutional Staking</h3>
+              <h3 className="mb-3 text-xl font-light">Risk-Averse Compounding</h3>
               <p className="text-sm text-white/50 leading-relaxed">
-                We operate enterprise-grade validator nodes on Ethereum, Solana, and Polkadot. Your assets secure the network while earning block rewards.
+                We prioritize capital preservation above all else. Our proprietary systems safely compound your wealth through meticulously audited, low-risk market environments.
               </p>
             </motion.div>
 
@@ -120,73 +117,16 @@ export default function DashboardPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 md:col-span-2 flex flex-col md:flex-row items-center gap-8 justify-between"
+              className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 md:col-span-2"
             >
-              <div className="absolute inset-0 bg-gold/5" />
-              <div className="relative z-10 max-w-lg">
-                <h3 className="text-2xl font-light mb-4">Ready to deploy capital?</h3>
-                <p className="text-sm text-white/60 mb-6">
-                  Now that your account is verified, you can access the deposit portal. Start generating passive yield today with our proprietary strategies.
-                </p>
-                <button className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-ink transition-all hover:scale-105">
-                  Access Portal
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </button>
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.05] text-white transition-transform duration-500 group-hover:scale-110">
+                <Briefcase className="size-6" />
               </div>
-              <div className="relative z-10 w-full max-w-[200px] shrink-0">
-                <div className="aspect-square rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center relative">
-                   <div className="absolute inset-2 rounded-full border border-gold/20 border-t-gold animate-spin-slow" />
-                   <Zap className="size-10 text-gold/50" />
-                </div>
-              </div>
+              <h3 className="mb-3 text-xl font-light">Institutional Grade Strategies</h3>
+              <p className="text-sm text-white/50 leading-relaxed max-w-xl">
+                Gain access to the exact same bespoke growth strategies typically reserved for ultra-high-net-worth individuals and tier-one institutions. No speculation, just systematic, verifiable wealth generation built on absolute trust.
+              </p>
             </motion.div>
-          </div>
-        </section>
-
-        {/* Exclusive Market Insights Section */}
-        <section className="px-6 md:px-12 lg:px-24 max-w-[1400px] mx-auto mt-32">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-3 py-1 mb-6">
-              <span className="text-xs font-medium tracking-wide text-gold">ALPHA INTELLIGENCE</span>
-            </div>
-            <h2 className="font-display text-3xl font-light md:text-5xl">Exclusive Market Insights</h2>
-            <p className="mt-4 max-w-2xl mx-auto text-white/50 text-sm md:text-base leading-relaxed">
-              Current arbitrage opportunities and macro-economic signals actively being exploited by our neural networks.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { asset: "ETH/USDC", signal: "Strong Buy", strategy: "DEX Arbitrage", return: "+4.2% APY Spike" },
-              { asset: "SOL/USDT", signal: "Hold", strategy: "Validator Staking", return: "Steady at 7.1%" },
-              { asset: "BTC/WBTC", signal: "Execute", strategy: "Cross-chain Liquidity", return: "0.8% Spread" },
-            ].map((insight, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.1 * i, ease: [0.16, 1, 0.3, 1] }}
-                className="group p-8 rounded-3xl bg-white/[0.02] border border-white/10 flex flex-col justify-between hover:bg-white/[0.04] transition-colors"
-              >
-                <div>
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-2xl font-light font-display">{insight.asset}</h3>
-                    <span className="px-3 py-1 rounded-full bg-white/10 text-white text-[10px] uppercase font-mono tracking-wider">{insight.signal}</span>
-                  </div>
-                  <p className="text-white/40 text-sm mb-6">Strategy: {insight.strategy}</p>
-                </div>
-                <div className="pt-4 border-t border-white/10">
-                  <p className="text-green-400 font-medium">{insight.return}</p>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </section>
 
