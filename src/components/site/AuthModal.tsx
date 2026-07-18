@@ -305,7 +305,7 @@ function SignupForm({ onClose }: { onClose: () => void }) {
         />
         {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email}</p>}
       </div>
-      <div className="grid grid-cols-[100px_1fr] gap-2">
+      <div className="grid grid-cols-[110px_1fr] gap-2">
         <CountryDropdown value={countryIso} onChange={setCountryIso} />
         <div>
           <Field

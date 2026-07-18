@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronDown, Search, Check } from 'lucide-react';
-import { COUNTRIES, CountryData } from '@/lib/countries';
-import { cn } from '@/lib/utils'; // assuming standard shadcn utils exist
+import { ChevronDown, Search } from 'lucide-react';
+import { COUNTRIES } from '@/lib/countries';
+import { cn } from '@/lib/utils';
 
 interface CountryDropdownProps {
   value: string; // ISO code
@@ -17,6 +17,7 @@ export function CountryDropdown({ value, onChange, className }: CountryDropdownP
   const selectedCountry = COUNTRIES.find(c => c.iso === value) || COUNTRIES[0];
   const filteredCountries = COUNTRIES.filter(c => 
     c.name.toLowerCase().includes(search.toLowerCase()) || 
+    c.iso.toLowerCase().includes(search.toLowerCase()) ||
     c.dialCode.includes(search)
   );
 
@@ -35,60 +36,69 @@ export function CountryDropdown({ value, onChange, className }: CountryDropdownP
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white/20"
+        className="flex items-center justify-between w-full px-4 py-3 bg-black border border-white/10 rounded-2xl text-white hover:bg-white/5 transition-colors focus:outline-none focus:border-gold/50"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
-        <span className="flex items-center gap-2 truncate">
-          <span>{selectedCountry.iso}</span>
-          <span className="text-white/50">+{selectedCountry.dialCode}</span>
+        <span className="flex items-center gap-1.5 text-sm font-medium">
+          <span className="text-white">{selectedCountry.iso}</span>
+          <span className="text-white/40">+{selectedCountry.dialCode}</span>
         </span>
-        <ChevronDown className={cn("w-4 h-4 transition-transform duration-200", isOpen ? "rotate-180" : "")} />
+        <ChevronDown className={cn("w-3.5 h-3.5 text-white/40 transition-transform duration-200", isOpen ? "rotate-180" : "")} />
       </button>
 
       {isOpen && (
-        <div className="absolute z-50 w-full mt-2 bg-black/80 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="p-2 border-b border-white/10 flex items-center gap-2 px-3">
-            <Search className="w-4 h-4 text-white/50" />
-            <input
-              type="text"
-              className="w-full bg-transparent border-none text-white text-sm focus:outline-none placeholder:text-white/30"
-              placeholder="Search country..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              onClick={e => e.stopPropagation()}
-            />
-          </div>
-          <ul className="max-h-60 overflow-y-auto p-1 scrollbar-thin scrollbar-thumb-white/10" role="listbox">
-            {filteredCountries.length > 0 ? (
-              filteredCountries.map(country => (
-                <li
-                  key={country.iso}
-                  role="option"
-                  aria-selected={value === country.iso}
-                  className={cn(
-                    "flex items-center justify-between px-3 py-2 text-sm rounded-md cursor-pointer transition-colors",
-                    value === country.iso ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white"
-                  )}
-                  onClick={() => {
-                    onChange(country.iso);
-                    setIsOpen(false);
-                    setSearch('');
-                  }}
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="w-6 font-medium text-white/90">{country.iso}</span>
-                    <span>{country.name}</span>
-                  </div>
-                  <span className="text-white/50">+{country.dialCode}</span>
+        <div className="fixed inset-0 z-[200]" onClick={() => setIsOpen(false)}>
+          <div 
+            className="absolute z-[201] w-[280px] bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+            style={{
+              top: dropdownRef.current ? dropdownRef.current.getBoundingClientRect().bottom + 6 : 0,
+              left: dropdownRef.current ? dropdownRef.current.getBoundingClientRect().left : 0,
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="p-3 border-b border-white/10 flex items-center gap-2">
+              <Search className="w-4 h-4 text-white/40 shrink-0" />
+              <input
+                type="text"
+                className="w-full bg-transparent border-none text-white text-sm focus:outline-none placeholder:text-white/30"
+                placeholder="Search..."
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                autoFocus
+              />
+            </div>
+            <ul className="max-h-[240px] overflow-y-auto p-1.5" role="listbox">
+              {filteredCountries.length > 0 ? (
+                filteredCountries.map(country => (
+                  <li
+                    key={country.iso}
+                    role="option"
+                    aria-selected={value === country.iso}
+                    className={cn(
+                      "flex items-center justify-between px-3 py-2.5 text-sm rounded-xl cursor-pointer transition-colors",
+                      value === country.iso ? "bg-gold/10 text-gold" : "text-white/70 hover:bg-white/5 hover:text-white"
+                    )}
+                    onClick={() => {
+                      onChange(country.iso);
+                      setIsOpen(false);
+                      setSearch('');
+                    }}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="w-7 font-mono font-bold text-sm text-white">{country.iso}</span>
+                      <span className="text-white/60 text-xs">{country.name}</span>
+                    </div>
+                    <span className="text-white/40 font-mono text-xs">+{country.dialCode}</span>
+                  </li>
+                ))
+              ) : (
+                <li className="px-3 py-4 text-center text-sm text-white/50">
+                  No country found
                 </li>
-              ))
-            ) : (
-              <li className="px-3 py-4 text-center text-sm text-white/50">
-                No country found
-              </li>
-            )}
-          </ul>
+              )}
+            </ul>
+          </div>
         </div>
       )}
     </div>

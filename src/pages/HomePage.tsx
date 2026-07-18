@@ -15,6 +15,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { AuthModal, type AuthMode } from "@/components/site/AuthModal";
+import { ContactForm } from "@/components/site/ContactForm";
 
 export default function HomePage() {
   const [authOpen, setAuthOpen] = useState(false);
@@ -32,6 +33,7 @@ export default function HomePage() {
       <Features />
       <Performance />
       <Testimonials />
+      <ContactSection />
       <Faq />
       <CTA onSignUp={() => openAuth("signup")} />
       <Footer />
@@ -465,4 +467,25 @@ function CTA({ onSignUp }: { onSignUp: () => void }) {
   );
 }
 
+/* ---------------- CONTACT ---------------- */
+function ContactSection() {
+  return (
+    <section id="contact" className="relative bg-ink py-32 text-white border-t border-white/5">
+      <div className="mx-auto max-w-[1400px] px-6">
+        <Reveal>
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold">Get in Touch</span>
+              <h2 className="font-display mt-6 text-3xl font-light md:text-5xl">Speak with an Advisor</h2>
+              <p className="mt-4 text-white/50 text-sm md:text-base leading-relaxed">
+                Have questions before securing your allocation? Our concierge team is available 24/7.
+              </p>
+            </div>
+            <ContactForm />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
 
