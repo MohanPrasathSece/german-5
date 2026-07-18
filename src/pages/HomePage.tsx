@@ -85,9 +85,9 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
           </motion.div>
 
           <h1 className="font-display mt-4 text-[clamp(2.5rem,6.5vw,5.5rem)] font-light leading-[1.02] tracking-tight text-white flex flex-col items-center justify-center">
-            <span>Last Chance to Join.</span>
+            <span>Institutional Crypto</span>
             <span className="block mt-2">
-              Secure your <span className="italic text-gold font-normal">Allocation.</span>
+              Investment <span className="italic text-gold font-normal">Platform.</span>
             </span>
           </h1>
 
