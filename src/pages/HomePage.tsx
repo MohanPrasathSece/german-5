@@ -139,9 +139,66 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
                 <div className="mt-8 font-mono text-2xl text-emerald-400">+12.4% <span className="text-xs text-white/40">APY</span></div>
               </div>
               
-              <div className="relative flex flex-col justify-end rounded-2xl bg-gradient-to-br from-gold/10 to-transparent p-6 border border-white/5 sm:col-span-2">
+              <div className="relative flex flex-col justify-between rounded-2xl bg-gradient-to-br from-gold/10 to-transparent p-6 border border-white/5 sm:col-span-2 overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(233,216,74,0.1),transparent_50%)]" />
-                <div className="relative">
+                
+                {/* Animated Candlestick Chart */}
+                <div className="relative flex-1 flex items-end gap-[6px] sm:gap-2 pt-8 pb-2 min-h-[160px] sm:min-h-[220px]">
+                  {/* Grid lines */}
+                  <div className="absolute inset-0 flex flex-col justify-between pointer-events-none">
+                    {[...Array(5)].map((_, i) => (
+                      <div key={i} className="w-full border-t border-white/[0.04]" />
+                    ))}
+                  </div>
+
+                  {/* Candles */}
+                  {[
+                    { h: 65, body: 30, top: 15, green: true,  delay: 0 },
+                    { h: 80, body: 25, top: 25, green: false, delay: 0.1 },
+                    { h: 70, body: 35, top: 10, green: true,  delay: 0.2 },
+                    { h: 55, body: 20, top: 20, green: false, delay: 0.3 },
+                    { h: 85, body: 40, top: 15, green: true,  delay: 0.4 },
+                    { h: 60, body: 22, top: 22, green: false, delay: 0.5 },
+                    { h: 90, body: 45, top: 10, green: true,  delay: 0.6 },
+                    { h: 50, body: 18, top: 18, green: true,  delay: 0.7 },
+                    { h: 75, body: 30, top: 20, green: false, delay: 0.8 },
+                    { h: 95, body: 50, top: 8,  green: true,  delay: 0.9 },
+                    { h: 68, body: 28, top: 15, green: true,  delay: 1.0 },
+                    { h: 58, body: 20, top: 25, green: false, delay: 1.1 },
+                    { h: 82, body: 38, top: 12, green: true,  delay: 1.2 },
+                    { h: 45, body: 15, top: 20, green: false, delay: 1.3 },
+                    { h: 88, body: 42, top: 10, green: true,  delay: 1.4 },
+                    { h: 62, body: 24, top: 18, green: true,  delay: 1.5 },
+                  ].map((candle, i) => (
+                    <motion.div
+                      key={i}
+                      className="flex-1 flex flex-col items-center justify-end relative"
+                      initial={{ scaleY: 0, opacity: 0 }}
+                      animate={{ scaleY: 1, opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 0.8 + candle.delay * 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ transformOrigin: 'bottom', height: `${candle.h}%` }}
+                    >
+                      {/* Wick */}
+                      <div
+                        className={`w-[1px] sm:w-[1.5px] ${candle.green ? 'bg-emerald-500/60' : 'bg-red-500/60'}`}
+                        style={{ height: `${candle.top}%` }}
+                      />
+                      {/* Body */}
+                      <motion.div
+                        className={`w-full max-w-[8px] sm:max-w-[12px] rounded-[2px] ${candle.green ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.3)]' : 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.3)]'}`}
+                        style={{ height: `${candle.body}%`, minHeight: 4 }}
+                        animate={{ opacity: [0.8, 1, 0.8] }}
+                        transition={{ duration: 2 + Math.random(), repeat: Infinity, delay: candle.delay }}
+                      />
+                      {/* Bottom wick */}
+                      <div
+                        className={`w-[1px] sm:w-[1.5px] flex-1 ${candle.green ? 'bg-emerald-500/60' : 'bg-red-500/60'}`}
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+
+                <div className="relative mt-4">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-gold">Real-time Analytics</span>
                   <h4 className="font-display mt-2 text-2xl sm:text-4xl text-white">Advanced market intelligence.</h4>
                   <p className="mt-3 text-sm text-white/60 max-w-md">Track your portfolio performance across all assets with precision data visualization.</p>
