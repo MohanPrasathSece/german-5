@@ -33,8 +33,8 @@ export default function HomePage() {
       <Features />
       <Performance />
       <Testimonials />
-      <ContactSection />
       <Faq />
+      <ContactSection />
       <CTA onSignUp={() => openAuth("signup")} />
       <Footer />
 
@@ -556,23 +556,23 @@ function Faq() {
 /* ---------------- CTA ---------------- */
 function CTA({ onSignUp }: { onSignUp: () => void }) {
   return (
-    <section id="cta" className="relative bg-ink py-32 text-white border-t border-white/5">
-      <div className="mx-auto max-w-[1400px] px-6">
+    <section id="cta" className="relative bg-ink py-16 sm:py-32 text-white border-t border-white/5">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
         <Reveal>
-          <div className="relative overflow-hidden rounded-[36px] bg-gradient-to-r from-gold to-gold-soft p-12 text-ink sm:p-20">
-            <div className="absolute -right-20 -top-20 h-[420px] w-[420px] rounded-full bg-white/30 blur-3xl" />
-            <div className="relative grid items-end gap-12 lg:grid-cols-[1.4fr_1fr]">
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-[36px] bg-gradient-to-r from-gold to-gold-soft p-8 sm:p-12 text-ink md:p-20">
+            <div className="absolute -right-20 -top-20 h-[300px] w-[300px] sm:h-[420px] sm:w-[420px] rounded-full bg-white/30 blur-3xl" />
+            <div className="relative grid items-end gap-8 sm:gap-12 lg:grid-cols-[1.4fr_1fr]">
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink/70 bg-ink/10 px-3 py-1 rounded-full border border-ink/10">Closing Soon</span>
-                <h2 className="font-display mt-6 text-5xl font-light leading-[1.02] tracking-tight sm:text-7xl">
+                <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-ink/70 bg-ink/10 px-3 py-1 rounded-full border border-ink/10">Closing Soon</span>
+                <h2 className="font-display mt-4 sm:mt-6 text-3xl sm:text-5xl font-light leading-[1.02] tracking-tight md:text-7xl">
                   Final 88 <span className="italic block sm:inline">Positions.</span>
                 </h2>
-                <p className="mt-4 text-ink/80 max-w-xl text-base sm:text-lg font-medium">
+                <p className="mt-3 sm:mt-4 text-ink/80 max-w-xl text-sm sm:text-base md:text-lg font-medium">
                   Our fund is strictly capped at 2,500 members to maintain yield integrity. Secure your allocation before we close to the public indefinitely.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
-                <button onClick={onSignUp} className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-4 text-sm font-medium text-gold transition hover:scale-[1.02] text-center cursor-pointer">
+                <button onClick={onSignUp} className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 sm:px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-medium text-gold transition hover:scale-[1.02] text-center cursor-pointer">
                   Create Your Account <ArrowUpRight className="size-4" />
                 </button>
               </div>
@@ -587,14 +587,14 @@ function CTA({ onSignUp }: { onSignUp: () => void }) {
 /* ---------------- CONTACT ---------------- */
 function ContactSection() {
   return (
-    <section id="contact" className="relative bg-ink py-32 text-white border-t border-white/5">
-      <div className="mx-auto max-w-[1400px] px-6">
+    <section id="contact" className="relative bg-ink py-16 sm:py-32 text-white border-t border-white/5">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
         <Reveal>
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold">Get in Touch</span>
-              <h2 className="font-display mt-6 text-3xl font-light md:text-5xl">Speak with an Advisor</h2>
-              <p className="mt-4 text-white/50 text-sm md:text-base leading-relaxed">
+            <div className="text-center mb-8 sm:mb-12">
+              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-gold">Get in Touch</span>
+              <h2 className="font-display mt-4 sm:mt-6 text-2xl sm:text-3xl font-light md:text-5xl">Speak with an Advisor</h2>
+              <p className="mt-3 sm:mt-4 text-white/50 text-xs sm:text-sm md:text-base leading-relaxed">
                 Have questions before securing your allocation? Our concierge team is available 24/7.
               </p>
             </div>
@@ -605,4 +605,3 @@ function ContactSection() {
     </section>
   );
 }
-

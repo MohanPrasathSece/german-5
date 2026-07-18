@@ -32,11 +32,11 @@ export function CountryDropdown({ value, onChange, className }: CountryDropdownP
   }, []);
 
   return (
-    <div className={cn("relative w-full", className)} ref={dropdownRef}>
+    <div className={cn("relative w-[110px] sm:w-[120px] shrink-0", className)} ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full px-4 py-3 bg-black border border-white/10 rounded-2xl text-white hover:bg-white/5 transition-colors focus:outline-none focus:border-gold/50"
+        className="flex items-center justify-between w-full h-full px-3 sm:px-4 py-3 sm:py-4 bg-black/60 border border-white/10 rounded-xl sm:rounded-2xl text-white hover:bg-white/5 transition-colors focus:outline-none focus:border-gold/50"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
