@@ -52,161 +52,221 @@ export default function HomePage() {
 function Hero({ onSignUp }: { onSignUp: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const previewY = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+
+  const candles = [
+    { h: 55, body: 28, top: 12, green: true },
+    { h: 72, body: 22, top: 28, green: false },
+    { h: 64, body: 32, top: 10, green: true },
+    { h: 48, body: 18, top: 18, green: false },
+    { h: 80, body: 38, top: 14, green: true },
+    { h: 56, body: 20, top: 22, green: false },
+    { h: 88, body: 44, top: 10, green: true },
+    { h: 44, body: 16, top: 16, green: true },
+    { h: 70, body: 28, top: 20, green: false },
+    { h: 92, body: 48, top: 8,  green: true },
+    { h: 60, body: 26, top: 14, green: true },
+    { h: 52, body: 18, top: 24, green: false },
+    { h: 78, body: 36, top: 12, green: true },
+    { h: 40, body: 14, top: 18, green: false },
+    { h: 85, body: 40, top: 10, green: true },
+    { h: 58, body: 22, top: 16, green: true },
+    { h: 68, body: 30, top: 14, green: false },
+    { h: 90, body: 46, top: 8,  green: true },
+    { h: 50, body: 20, top: 20, green: true },
+    { h: 76, body: 34, top: 12, green: false },
+    { h: 94, body: 50, top: 6,  green: true },
+    { h: 62, body: 24, top: 18, green: true },
+    { h: 82, body: 38, top: 10, green: true },
+    { h: 46, body: 16, top: 22, green: false },
+  ];
 
   return (
-    <section ref={ref} className="relative pt-32 pb-24 sm:pt-40 sm:pb-32 grain overflow-hidden">
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-x-0 top-20 -z-0 mx-auto h-[600px] max-w-[1100px] rounded-full bg-[radial-gradient(closest-side,rgba(233,216,74,0.12),transparent_70%)] blur-3xl animate-pulse" />
+    <section ref={ref} className="relative min-h-screen flex items-center grain overflow-hidden">
+      {/* Ambient glows */}
+      <div className="pointer-events-none absolute -left-[15%] top-[10%] h-[700px] w-[700px] rounded-full bg-gold/[0.07] blur-[150px]" />
+      <div className="pointer-events-none absolute right-0 bottom-0 h-[500px] w-[500px] rounded-full bg-emerald-500/[0.04] blur-[120px]" />
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6">
-        <div className="mx-auto max-w-4xl text-center">
+      {/* Background candlestick chart */}
+      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 flex items-end gap-[3px] px-6 pb-0 opacity-[0.12]">
+        {candles.map((candle, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-8 flex flex-col items-center gap-3"
+            key={i}
+            className="flex-1 flex flex-col items-center justify-end"
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+            style={{ transformOrigin: 'bottom', height: `${candle.h}%` }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.25em] text-red-400">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
-              </span>
-              Strictly Limited Allocation
-            </div>
-            
-            <div className="flex items-center gap-4 text-sm text-white/70 bg-white/5 rounded-full px-6 py-2 border border-white/10">
-               <span><strong>2,412</strong> / 2,500 Seats Filled</span>
-               <div className="w-24 h-1.5 bg-white/10 rounded-full overflow-hidden hidden sm:block">
-                  <div className="h-full bg-gradient-to-r from-gold to-red-500 w-[96.4%] rounded-full" />
-               </div>
-               <span className="text-red-400 font-medium">88 Remaining</span>
-            </div>
+            <div className={`w-[2px] ${candle.green ? 'bg-emerald-400' : 'bg-red-400'}`} style={{ height: `${candle.top}%` }} />
+            <motion.div
+              className={`w-full max-w-[20px] rounded-[2px] ${candle.green ? 'bg-emerald-400' : 'bg-red-400'}`}
+              style={{ height: `${candle.body}%`, minHeight: 6 }}
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 3 + Math.random() * 2, repeat: Infinity, delay: i * 0.15 }}
+            />
+            <div className={`w-[2px] flex-1 ${candle.green ? 'bg-emerald-400' : 'bg-red-400'}`} />
           </motion.div>
+        ))}
+      </motion.div>
 
-          <h1 className="font-display mt-4 text-[clamp(2.5rem,6.5vw,5.5rem)] font-light leading-[1.02] tracking-tight text-white flex flex-col items-center justify-center">
-            <span>Institutional Crypto</span>
-            <span className="block mt-2">
-              Investment <span className="italic text-gold font-normal">Platform.</span>
-            </span>
-          </h1>
+      {/* Bottom gradient fade */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent z-[1]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-ink to-transparent z-[1]" />
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-8 max-w-3xl text-balance text-lg text-white/80 sm:text-xl leading-relaxed"
-          >
-            Aegis Crypto's exclusive institutional fund is closing its doors. Join the final 88 members to generate automated, risk-averse yield through our proprietary algorithms before capacity is reached.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-4"
-          >
-            <button
-              onClick={onSignUp}
-              className="group inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4.5 text-base font-semibold text-ink transition hover:scale-[1.03] cursor-pointer"
+      <div className="relative z-10 mx-auto max-w-[1400px] w-full px-6 py-32 sm:py-40">
+        <div className="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
+          {/* Left: Text content */}
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="mb-8 flex flex-col items-start gap-3"
             >
-              Start Investing
-              <ArrowUpRight className="size-5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-          </motion.div>
-        </div>
-
-        {/* Premium Interactive Mockup Preview */}
-        <motion.div style={{ y: previewY }} className="relative mt-24">
-          <div className="overflow-hidden rounded-[28px] border border-white/10 bg-black/60 p-2 backdrop-blur-xl shadow-2xl">
-            <div className="flex items-center justify-between border-b border-white/5 bg-white/[0.02] px-4 py-3 text-xs text-white/40">
-              <div className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-full bg-red-500/60" />
-                <span className="h-3 w-3 rounded-full bg-yellow-500/60" />
-                <span className="h-3 w-3 rounded-full bg-green-500/60" />
-              </div>
-              <div className="rounded-md bg-white/[0.04] px-16 py-1 font-mono tracking-wider">app.aegiscrypto.com</div>
-              <div className="w-12" />
-            </div>
-            
-            <div className="grid min-h-[300px] gap-6 p-6 sm:min-h-[400px] sm:grid-cols-3">
-              <div className="flex flex-col justify-between rounded-2xl bg-white/[0.02] p-6 border border-white/5">
-                <div>
-                  <div className="inline-block rounded-lg bg-emerald-500/10 p-2 text-emerald-400"><TrendingUp className="size-5" /></div>
-                  <h4 className="font-display mt-4 text-xl text-white">Portfolio Yield</h4>
-                  <p className="mt-2 text-xs text-white/40">Automated staking and algorithmic yield generation.</p>
-                </div>
-                <div className="mt-8 font-mono text-2xl text-emerald-400">+12.4% <span className="text-xs text-white/40">APY</span></div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.25em] text-red-400">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
+                </span>
+                Strictly Limited Allocation
               </div>
               
-              <div className="relative flex flex-col justify-between rounded-2xl bg-gradient-to-br from-gold/10 to-transparent p-6 border border-white/5 sm:col-span-2 overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(233,216,74,0.1),transparent_50%)]" />
-                
-                {/* Animated Candlestick Chart */}
-                <div className="relative flex-1 flex items-end gap-[6px] sm:gap-2 pt-8 pb-2 min-h-[160px] sm:min-h-[220px]">
-                  {/* Grid lines */}
-                  <div className="absolute inset-0 flex flex-col justify-between pointer-events-none">
-                    {[...Array(5)].map((_, i) => (
-                      <div key={i} className="w-full border-t border-white/[0.04]" />
-                    ))}
+              <div className="flex items-center gap-4 text-sm text-white/70 bg-white/5 rounded-full px-5 py-2 border border-white/10">
+                 <span><strong>2,412</strong> / 2,500 Seats Filled</span>
+                 <div className="w-20 h-1.5 bg-white/10 rounded-full overflow-hidden hidden sm:block">
+                   <div className="h-full bg-gradient-to-r from-gold to-red-500 w-[96.4%] rounded-full" />
+                 </div>
+                 <span className="text-red-400 font-medium">88 Left</span>
+              </div>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="font-display text-[clamp(2.5rem,5.5vw,5rem)] font-light leading-[1.05] tracking-tight text-white"
+            >
+              Institutional Crypto<br />
+              Investment <span className="italic text-gold font-normal">Platform.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-8 max-w-xl text-lg text-white/60 leading-relaxed"
+            >
+              Aegis Crypto's exclusive institutional fund is closing its doors. Join the final 88 members to generate automated, risk-averse yield through our proprietary algorithms before capacity is reached.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-10 flex flex-wrap items-center gap-4"
+            >
+              <button
+                onClick={onSignUp}
+                className="group inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4.5 text-base font-semibold text-ink transition hover:scale-[1.03] cursor-pointer"
+              >
+                Start Investing
+                <ArrowUpRight className="size-5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+              <a href="#features" className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition font-medium">
+                Learn how it works
+                <ArrowUpRight className="size-4" />
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right: Live stats dashboard */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="hidden lg:flex flex-col gap-4"
+          >
+            {/* Mini candlestick chart card */}
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 rounded-full bg-gold/10 flex items-center justify-center text-gold font-display font-bold text-sm">B</div>
+                  <div>
+                    <div className="text-sm font-medium text-white">BTC/USDT</div>
+                    <div className="text-xs text-white/40">Bitcoin</div>
                   </div>
-
-                  {/* Candles */}
-                  {[
-                    { h: 65, body: 30, top: 15, green: true,  delay: 0 },
-                    { h: 80, body: 25, top: 25, green: false, delay: 0.1 },
-                    { h: 70, body: 35, top: 10, green: true,  delay: 0.2 },
-                    { h: 55, body: 20, top: 20, green: false, delay: 0.3 },
-                    { h: 85, body: 40, top: 15, green: true,  delay: 0.4 },
-                    { h: 60, body: 22, top: 22, green: false, delay: 0.5 },
-                    { h: 90, body: 45, top: 10, green: true,  delay: 0.6 },
-                    { h: 50, body: 18, top: 18, green: true,  delay: 0.7 },
-                    { h: 75, body: 30, top: 20, green: false, delay: 0.8 },
-                    { h: 95, body: 50, top: 8,  green: true,  delay: 0.9 },
-                    { h: 68, body: 28, top: 15, green: true,  delay: 1.0 },
-                    { h: 58, body: 20, top: 25, green: false, delay: 1.1 },
-                    { h: 82, body: 38, top: 12, green: true,  delay: 1.2 },
-                    { h: 45, body: 15, top: 20, green: false, delay: 1.3 },
-                    { h: 88, body: 42, top: 10, green: true,  delay: 1.4 },
-                    { h: 62, body: 24, top: 18, green: true,  delay: 1.5 },
-                  ].map((candle, i) => (
-                    <motion.div
-                      key={i}
-                      className="flex-1 flex flex-col items-center justify-end relative"
-                      initial={{ scaleY: 0, opacity: 0 }}
-                      animate={{ scaleY: 1, opacity: 1 }}
-                      transition={{ duration: 0.6, delay: 0.8 + candle.delay * 0.3, ease: [0.22, 1, 0.36, 1] }}
-                      style={{ transformOrigin: 'bottom', height: `${candle.h}%` }}
-                    >
-                      {/* Wick */}
-                      <div
-                        className={`w-[1px] sm:w-[1.5px] ${candle.green ? 'bg-emerald-500/60' : 'bg-red-500/60'}`}
-                        style={{ height: `${candle.top}%` }}
-                      />
-                      {/* Body */}
-                      <motion.div
-                        className={`w-full max-w-[8px] sm:max-w-[12px] rounded-[2px] ${candle.green ? 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.3)]' : 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.3)]'}`}
-                        style={{ height: `${candle.body}%`, minHeight: 4 }}
-                        animate={{ opacity: [0.8, 1, 0.8] }}
-                        transition={{ duration: 2 + Math.random(), repeat: Infinity, delay: candle.delay }}
-                      />
-                      {/* Bottom wick */}
-                      <div
-                        className={`w-[1px] sm:w-[1.5px] flex-1 ${candle.green ? 'bg-emerald-500/60' : 'bg-red-500/60'}`}
-                      />
-                    </motion.div>
-                  ))}
                 </div>
-
-                <div className="relative mt-4">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-gold">Real-time Analytics</span>
-                  <h4 className="font-display mt-2 text-2xl sm:text-4xl text-white">Advanced market intelligence.</h4>
-                  <p className="mt-3 text-sm text-white/60 max-w-md">Track your portfolio performance across all assets with precision data visualization.</p>
+                <div className="text-right">
+                  <div className="font-mono text-lg text-white">$67,420</div>
+                  <div className="font-mono text-xs text-emerald-400">+2.84%</div>
                 </div>
               </div>
+              {/* Mini chart */}
+              <div className="flex items-end gap-1 h-20">
+                {candles.slice(0, 16).map((c, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex-1 flex flex-col items-center justify-end"
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{ duration: 0.5, delay: 0.6 + i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                    style={{ transformOrigin: 'bottom', height: `${c.h}%` }}
+                  >
+                    <div className={`w-[1px] ${c.green ? 'bg-emerald-500/50' : 'bg-red-500/50'}`} style={{ height: `${c.top}%` }} />
+                    <motion.div
+                      className={`w-full max-w-[6px] rounded-[1px] ${c.green ? 'bg-emerald-500' : 'bg-red-500'}`}
+                      style={{ height: `${c.body}%`, minHeight: 2 }}
+                      animate={{ opacity: [0.7, 1, 0.7] }}
+                      transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.1 }}
+                    />
+                    <div className={`w-[1px] flex-1 ${c.green ? 'bg-emerald-500/50' : 'bg-red-500/50'}`} />
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
-        </motion.div>
+
+            {/* Stats row */}
+            <div className="grid grid-cols-2 gap-4">
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-6"
+              >
+                <div className="text-xs text-white/40 mb-2 font-mono uppercase tracking-wider">Target APY</div>
+                <div className="font-display text-3xl font-light text-gold">14.2%</div>
+                <div className="mt-2 text-xs text-emerald-400/80">Consistently delivered</div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
+                className="rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-6"
+              >
+                <div className="text-xs text-white/40 mb-2 font-mono uppercase tracking-wider">Win Rate</div>
+                <div className="font-display text-3xl font-light text-white">98.4%</div>
+                <div className="mt-2 text-xs text-white/40">Across all strategies</div>
+              </motion.div>
+            </div>
+
+            {/* Trust badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
+              className="rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-5 flex items-center gap-4"
+            >
+              <div className="h-10 w-10 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 shrink-0">
+                <ShieldCheck className="size-5" />
+              </div>
+              <div>
+                <div className="text-sm font-medium text-white">Enterprise Security</div>
+                <div className="text-xs text-white/40 mt-0.5">Multi-sig cold storage - SOC 2 compliant - Fully insured</div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
