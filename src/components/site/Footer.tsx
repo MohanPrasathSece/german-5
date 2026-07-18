@@ -7,7 +7,7 @@ export function Footer() {
         </div>
         
         <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
-          <span>© {new Date().getFullYear()} Aegis Crypto. All Rights Reserved.</span>
+          <span>© {new Date().getFullYear()} Aegis Crypto. Alle Rechte vorbehalten.</span>
         </div>
       </div>
     </footer>

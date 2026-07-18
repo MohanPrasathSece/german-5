@@ -36,7 +36,7 @@ export function CountryDropdown({ value, onChange, className }: CountryDropdownP
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full h-full px-3 sm:px-4 py-3 sm:py-4 bg-black/60 border border-white/10 rounded-xl sm:rounded-2xl text-white hover:bg-white/5 transition-colors focus:outline-none focus:border-gold/50"
+        className="flex items-center justify-between w-full h-full px-3 sm:px-4 py-3 sm:py-4 bg-transparent border-r border-white/10 text-white hover:bg-white/5 transition-colors focus:outline-none rounded-l-xl sm:rounded-l-2xl"
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >

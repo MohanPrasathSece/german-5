@@ -45,7 +45,7 @@ export function Nav({
                 className="flex items-center gap-1.5 rounded-full border border-white/15 px-4 py-2 text-sm text-white/70 transition hover:bg-white/5 hover:text-white"
               >
                 <LogOut className="size-3.5" />
-                Sign out
+                Abmelden
               </button>
             </>
           ) : (
@@ -54,13 +54,13 @@ export function Nav({
                 onClick={onSignIn}
                 className="hidden text-sm text-white/70 transition hover:text-white sm:inline"
               >
-                Sign In
+                Anmelden
               </button>
               <button
                 onClick={onSignUp}
                 className="rounded-full bg-gold px-6 py-2.5 text-sm font-medium text-ink transition hover:scale-[1.03]"
               >
-                Sign Up
+                Registrieren
               </button>
             </>
           )}

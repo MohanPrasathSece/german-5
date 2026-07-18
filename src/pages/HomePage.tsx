@@ -99,15 +99,15 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75"></span>
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500"></span>
                 </span>
-                Strictly Limited Allocation
+                Streng limitierte Zuteilung
               </div>
               
               <div className="flex items-center gap-4 text-sm text-white/70 bg-white/5 rounded-full px-5 py-2 border border-white/10">
-                 <span><strong>2,412</strong> / 2,500 Seats Filled</span>
+                 <span><strong>2.412</strong> / 2.500 Plätze besetzt</span>
                  <div className="w-20 h-1.5 bg-white/10 rounded-full overflow-hidden hidden sm:block">
                    <div className="h-full bg-gradient-to-r from-gold to-red-500 w-[96.4%] rounded-full" />
                  </div>
-                 <span className="text-red-400 font-medium">88 Left</span>
+                 <span className="text-red-400 font-medium">88 verbleibend</span>
               </div>
             </motion.div>
 
@@ -117,8 +117,8 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
               transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-[clamp(2.5rem,5.5vw,5rem)] font-light leading-[1.05] tracking-tight text-white"
             >
-              Institutional Crypto<br />
-              Investment <span className="italic text-gold font-normal">Platform.</span>
+              Institutionelle Krypto<br />
+              Investment <span className="italic text-gold font-normal">Plattform.</span>
             </motion.h1>
 
             <motion.p
@@ -127,7 +127,7 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
               transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 max-w-xl text-lg text-white/60 leading-relaxed"
             >
-              Aegis Crypto's exclusive institutional fund is closing its doors. Join the final 88 members to generate automated, risk-averse yield through our proprietary algorithms before capacity is reached.
+              Der exklusive institutionelle Fonds von Aegis Crypto schließt seine Pforten. Schließen Sie sich den letzten 88 Mitgliedern an, um durch unsere proprietären Algorithmen automatisierte, risikoarme Renditen zu erzielen, bevor die Kapazität erreicht ist.
             </motion.p>
 
             <motion.div
@@ -140,11 +140,11 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
                 onClick={onSignUp}
                 className="group inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4.5 text-base font-semibold text-ink transition hover:scale-[1.03] cursor-pointer"
               >
-                Start Investing
+                Jetzt Investieren
                 <ArrowUpRight className="size-5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
               <a href="#features" className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white transition font-medium">
-                Learn how it works
+                Erfahren Sie, wie es funktioniert
                 <ArrowUpRight className="size-4" />
               </a>
             </motion.div>
@@ -204,9 +204,9 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
                 transition={{ duration: 0.8, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 className="rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-6"
               >
-                <div className="text-xs text-white/40 mb-2 font-mono uppercase tracking-wider">Target APY</div>
+                <div className="text-xs text-white/40 mb-2 font-mono uppercase tracking-wider">Ziel-APY</div>
                 <div className="font-display text-3xl font-light text-gold">14.2%</div>
-                <div className="mt-2 text-xs text-emerald-400/80">Consistently delivered</div>
+                <div className="mt-2 text-xs text-emerald-400/80">Kontinuierlich geliefert</div>
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
@@ -214,9 +214,9 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
                 transition={{ duration: 0.8, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
                 className="rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-md p-6"
               >
-                <div className="text-xs text-white/40 mb-2 font-mono uppercase tracking-wider">Win Rate</div>
+                <div className="text-xs text-white/40 mb-2 font-mono uppercase tracking-wider">Gewinnrate</div>
                 <div className="font-display text-3xl font-light text-white">98.4%</div>
-                <div className="mt-2 text-xs text-white/40">Across all strategies</div>
+                <div className="mt-2 text-xs text-white/40">Über alle Strategien hinweg</div>
               </motion.div>
             </div>
 
@@ -231,8 +231,8 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
                 <ShieldCheck className="size-5" />
               </div>
               <div>
-                <div className="text-sm font-medium text-white">Enterprise Security</div>
-                <div className="text-xs text-white/40 mt-0.5">Multi-sig cold storage - SOC 2 compliant - Fully insured</div>
+                <div className="text-sm font-medium text-white">Unternehmenssicherheit</div>
+                <div className="text-xs text-white/40 mt-0.5">Multi-Sig Cold Storage - SOC 2 konform - Vollständig versichert</div>
               </div>
             </motion.div>
           </motion.div>
@@ -251,7 +251,7 @@ function TrustedBy() {
     <section className="relative border-y border-white/10 bg-ink py-10">
       <div className="mx-auto max-w-[1400px] px-6">
         <h3 className="text-center font-mono text-xs uppercase tracking-[0.25em] text-white/40">
-          Secured By Industry Leaders
+          Gesichert durch Branchenführer
         </h3>
         <div className="overflow-hidden mt-8">
           <div className="marquee flex w-max gap-16 whitespace-nowrap font-display text-xl sm:text-2xl font-light text-white/30">
@@ -273,27 +273,27 @@ function Features() {
   const featuresList = [
     {
       icon: ShieldCheck,
-      title: "Bank-Grade Security",
-      body: "Your assets are protected by multi-signature cold storage, rigorous audits, and industry-leading insurance.",
-      badge: "Security"
+      title: "Bankübliche Sicherheit",
+      body: "Ihre Vermögenswerte werden durch Multi-Sig Cold Storage, strenge Audits und branchenführende Versicherungen geschützt.",
+      badge: "Sicherheit"
     },
     {
       icon: BarChart3,
-      title: "Algorithmic Trading",
-      body: "Leverage advanced execution algorithms to minimize slippage and maximize returns across global markets.",
-      badge: "Performance"
+      title: "Algorithmischer Handel",
+      body: "Nutzen Sie fortschrittliche Ausführungsalgorithmen, um Slippage zu minimieren und Renditen auf globalen Märkten zu maximieren.",
+      badge: "Leistung"
     },
     {
       icon: Lock,
-      title: "Regulated Custody",
-      body: "We operate within strict regulatory frameworks, ensuring your capital is segregated and fully compliant.",
+      title: "Regulierte Verwahrung",
+      body: "Wir operieren innerhalb strenger regulatorischer Rahmenbedingungen, um sicherzustellen, dass Ihr Kapital getrennt und vollständig konform ist.",
       badge: "Compliance"
     },
     {
       icon: Wallet,
-      title: "Deep Liquidity",
-      body: "Access institutional-level liquidity pools for instant settlement on major digital assets.",
-      badge: "Liquidity"
+      title: "Hohe Liquidität",
+      body: "Greifen Sie auf Liquiditätspools auf institutionellem Niveau zu, um wichtige digitale Assets sofort abzuwickeln.",
+      badge: "Liquidität"
     }
   ];
 
@@ -303,14 +303,14 @@ function Features() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink/50">
-              Platform Features
+              Plattform-Funktionen
             </span>
             <h2 className="font-display mt-6 text-5xl font-light leading-[1.02] tracking-tight sm:text-7xl">
-              Engineered for
-              <span className="block italic text-ink/40">Excellence.</span>
+              Entwickelt für
+              <span className="block italic text-ink/40">Spitzenleistungen.</span>
             </h2>
             <p className="mt-6 max-w-md text-lg text-ink/70">
-              Everything you need to manage digital assets safely, without the technical complexity.
+              Alles, was Sie brauchen, um digitale Vermögenswerte sicher zu verwalten, ohne technische Komplexität.
             </p>
           </div>
 
@@ -357,13 +357,13 @@ function Performance() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6 border-b border-white/10 pb-12">
             <div>
-              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold">Live Markets</span>
+              <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold">Live-Märkte</span>
               <h2 className="font-display mt-6 text-5xl font-light leading-[1.02] tracking-tight sm:text-7xl">
-                Premium Asset <span className="italic block text-gold sm:inline">Coverage</span>
+                Premium-Asset <span className="italic block text-gold sm:inline">Abdeckung</span>
               </h2>
             </div>
             <p className="max-w-sm text-white/60 text-base leading-relaxed">
-              Trade and stake top-tier cryptocurrencies with deep liquidity and tight spreads.
+              Handeln und staken Sie erstklassige Kryptowährungen mit hoher Liquidität und engen Spreads.
             </p>
           </div>
         </Reveal>
@@ -397,19 +397,19 @@ function Performance() {
 function Testimonials() {
   const reviews = [
     {
-      quote: "Aegis Crypto provides the institutional security I need without sacrificing the agility of decentralized markets.",
+      quote: "Aegis Crypto bietet die institutionelle Sicherheit, die ich brauche, ohne die Agilität dezentralisierter Märkte zu opfern.",
       author: "Michael T.",
-      role: "Family Office Director",
+      role: "Family-Office-Direktor",
     },
     {
-      quote: "Their algorithmic yield generation strategies have consistently outperformed our internal benchmarks.",
+      quote: "Ihre algorithmischen Strategien zur Renditegenerierung haben unsere internen Benchmarks kontinuierlich übertroffen.",
       author: "Sarah J.",
-      role: "Fund Manager",
+      role: "Fondsmanager",
     },
     {
-      quote: "The cleanest, most professional platform for high-net-worth individuals looking to diversify into digital assets.",
+      quote: "Die sauberste und professionellste Plattform für vermögende Privatkunden, die in digitale Vermögenswerte diversifizieren möchten.",
       author: "David R.",
-      role: "Angel Investor",
+      role: "Angel-Investor",
     }
   ];
 
@@ -418,9 +418,9 @@ function Testimonials() {
       <div className="mx-auto max-w-[1400px] px-6">
         <Reveal>
           <div className="text-center max-w-3xl mx-auto">
-            <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink/50">Trusted By Investors</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-ink/50">Von Investoren vertraut</span>
             <h2 className="font-display mt-6 text-5xl font-light leading-[1.02] tracking-tight sm:text-7xl">
-              Capital Meets Confidence.
+              Kapital trifft Vertrauen.
             </h2>
           </div>
         </Reveal>
@@ -459,20 +459,20 @@ function Testimonials() {
 function Faq() {
   const faqItems = [
     {
-      q: "How secure are my assets?",
-      a: "Client assets are stored in heavily encrypted, multi-signature cold storage vaults offline. We partner with industry-leading custodians to ensure maximum security."
+      q: "Wie sicher sind meine Vermögenswerte?",
+      a: "Kundenvermögenswerte werden in stark verschlüsselten, offline Multi-Sig Cold-Storage-Tresoren gespeichert. Wir arbeiten mit branchenführenden Verwahrern zusammen, um maximale Sicherheit zu gewährleisten."
     },
     {
-      q: "What are the fees?",
-      a: "We charge a transparent flat percentage on AUM (Assets Under Management) with zero hidden trading fees or withdrawal penalties."
+      q: "Wie hoch sind die Gebühren?",
+      a: "Wir berechnen einen transparenten pauschalen Prozentsatz auf das AUM (Assets Under Management) ohne versteckte Handelsgebühren oder Auszahlungsstrafen."
     },
     {
-      q: "Who is eligible to invest?",
-      a: "We serve accredited investors, family offices, and institutional clients. A rigorous KYC/AML onboarding process is required."
+      q: "Wer ist berechtigt zu investieren?",
+      a: "Wir bedienen akkreditierte Investoren, Family Offices und institutionelle Kunden. Ein strenger KYC/AML-Onboarding-Prozess ist erforderlich."
     },
     {
-      q: "Do you provide tax reporting?",
-      a: "Yes, we provide comprehensive, automated tax reporting documents tailored to your jurisdiction at the end of each fiscal year."
+      q: "Bieten Sie Steuerberichte an?",
+      a: "Ja, wir stellen am Ende jedes Geschäftsjahres umfassende, automatisierte Steuerberichte zur Verfügung, die auf Ihre Gerichtsbarkeit zugeschnitten sind."
     }
   ];
 
@@ -482,12 +482,12 @@ function Faq() {
     <section id="faq" className="relative bg-ink py-32">
       <div className="mx-auto grid max-w-[1400px] items-start gap-16 px-6 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
-          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold">Questions?</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-gold">Fragen?</span>
           <h2 className="font-display mt-6 text-5xl font-light leading-[1.02] tracking-tight sm:text-6xl text-white">
-            Common Inquiries.
+            Häufige Fragen.
           </h2>
           <p className="mt-6 max-w-md text-lg text-white/60">
-            Clear, transparent answers about how we protect and grow your capital.
+            Klare, transparente Antworten darauf, wie wir Ihr Kapital schützen und vermehren.
           </p>
         </Reveal>
 
@@ -533,17 +533,17 @@ function CTA({ onSignUp }: { onSignUp: () => void }) {
             <div className="absolute -right-20 -top-20 h-[300px] w-[300px] sm:h-[420px] sm:w-[420px] rounded-full bg-white/30 blur-3xl" />
             <div className="relative grid items-end gap-8 sm:gap-12 lg:grid-cols-[1.4fr_1fr]">
               <div>
-                <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-ink/70 bg-ink/10 px-3 py-1 rounded-full border border-ink/10">Closing Soon</span>
+                <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-ink/70 bg-ink/10 px-3 py-1 rounded-full border border-ink/10">Schließt bald</span>
                 <h2 className="font-display mt-4 sm:mt-6 text-3xl sm:text-5xl font-light leading-[1.02] tracking-tight md:text-7xl">
-                  Final 88 <span className="italic block sm:inline">Positions.</span>
+                  Letzte 88 <span className="italic block sm:inline">Positionen.</span>
                 </h2>
                 <p className="mt-3 sm:mt-4 text-ink/80 max-w-xl text-sm sm:text-base md:text-lg font-medium">
-                  Our fund is strictly capped at 2,500 members to maintain yield integrity. Secure your allocation before we close to the public indefinitely.
+                  Unser Fonds ist strikt auf 2.500 Mitglieder begrenzt, um die Renditeintegrität aufrechtzuerhalten. Sichern Sie sich Ihre Zuteilung, bevor wir auf unbestimmte Zeit für die Öffentlichkeit schließen.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
                 <button onClick={onSignUp} className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 sm:px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-medium text-gold transition hover:scale-[1.02] text-center cursor-pointer">
-                  Create Your Account <ArrowUpRight className="size-4" />
+                  Konto Erstellen <ArrowUpRight className="size-4" />
                 </button>
               </div>
             </div>
@@ -562,10 +562,10 @@ function ContactSection() {
         <Reveal>
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8 sm:mb-12">
-              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-gold">Get in Touch</span>
-              <h2 className="font-display mt-4 sm:mt-6 text-2xl sm:text-3xl font-light md:text-5xl">Speak with an Advisor</h2>
+              <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-gold">Kontakt aufnehmen</span>
+              <h2 className="font-display mt-4 sm:mt-6 text-2xl sm:text-3xl font-light md:text-5xl">Sprechen Sie mit einem Berater</h2>
               <p className="mt-3 sm:mt-4 text-white/50 text-xs sm:text-sm md:text-base leading-relaxed">
-                Have questions before securing your allocation? Our concierge team is available 24/7.
+                Haben Sie Fragen, bevor Sie sich Ihre Zuteilung sichern? Unser Concierge-Team steht Ihnen rund um die Uhr zur Verfügung.
               </p>
             </div>
             <ContactForm />

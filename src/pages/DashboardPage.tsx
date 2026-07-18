@@ -43,11 +43,11 @@ export default function DashboardPage() {
               <span className="text-[10px] sm:text-xs font-medium tracking-wide text-gold">SECURE PORTAL ACTIVE</span>
             </div>
             <h1 className="font-display text-3xl sm:text-4xl font-light tracking-tight md:text-6xl lg:text-7xl">
-              Protecting and scaling <br className="hidden sm:block" />
-              <span className="italic text-white/70">your digital wealth.</span>
+              Schutz und Skalierung <br className="hidden sm:block" />
+              <span className="italic text-white/70">Ihres digitalen Vermögens.</span>
             </h1>
             <p className="mt-4 sm:mt-6 max-w-xl text-sm sm:text-lg text-white/50 leading-relaxed">
-              Welcome to your private institutional allocation portal. We utilize highly secure, proprietary frameworks to systematically protect your capital while exposing it to curated, compounded growth strategies.
+              Willkommen in Ihrem privaten institutionellen Zuteilungsportal. Wir nutzen hochsichere, proprietäre Frameworks, um Ihr Kapital systematisch zu schützen und es gleichzeitig kuratierten, verzinsten Wachstumsstrategien auszusetzen.
             </p>
           </motion.div>
 
@@ -65,16 +65,16 @@ export default function DashboardPage() {
               <div className="relative z-10">
                 <div className="flex items-center gap-2 text-gold mb-3 sm:mb-4">
                   <AlertCircle className="size-4 sm:size-5" />
-                  <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase">Limited Availability</span>
+                  <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase">Begrenzte Verfügbarkeit</span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-light md:text-3xl mb-3 sm:mb-4 text-white">
-                  Q3 Allocation Window Closing
+                  Q3 Zuteilungsfenster schließt
                 </h3>
                 <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-4 sm:mb-6">
-                  To ensure maximum capital efficiency and uncompromising security for our current partners, we strictly cap our total managed allocation. Once our current capacity threshold is reached, new deposits will be paused indefinitely.
+                  Um unseren aktuellen Partnern maximale Kapitaleffizienz und kompromisslose Sicherheit zu gewährleisten, begrenzen wir unsere gesamte verwaltete Zuteilung streng. Sobald unsere aktuelle Kapazitätsgrenze erreicht ist, werden neue Einzahlungen auf unbestimmte Zeit pausiert.
                 </p>
                 <button className="group inline-flex items-center gap-2 rounded-full bg-gold px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-ink transition-all hover:scale-105">
-                  Secure Your Allocation
+                  Sichern Sie Ihre Zuteilung
                   <ArrowRight className="size-3.5 sm:size-4 transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
@@ -90,9 +90,9 @@ export default function DashboardPage() {
               <div className="mb-4 sm:mb-6 inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-white/[0.05] text-gold transition-transform duration-500 group-hover:scale-110">
                 <Shield className="size-5 sm:size-6" />
               </div>
-              <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-light">Uncompromising Security</h3>
+              <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-light">Kompromisslose Sicherheit</h3>
               <p className="text-xs sm:text-sm text-white/50 leading-relaxed">
-                Your assets are protected by enterprise-grade cold storage and multi-signature verification, ensuring military-grade protection against all external threats.
+                Ihre Vermögenswerte werden durch Cold Storage auf Unternehmensniveau und Multi-Signatur-Verifizierung geschützt, was einen Schutz nach militärischen Standards vor allen externen Bedrohungen gewährleistet.
               </p>
             </motion.div>
 
@@ -106,9 +106,9 @@ export default function DashboardPage() {
               <div className="mb-4 sm:mb-6 inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-white/[0.05] text-white transition-transform duration-500 group-hover:scale-110">
                 <Lock className="size-5 sm:size-6" />
               </div>
-              <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-light">Risk-Averse Compounding</h3>
+              <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-light">Risikoaverser Zinseszins</h3>
               <p className="text-xs sm:text-sm text-white/50 leading-relaxed">
-                We prioritize capital preservation above all else. Our proprietary systems safely compound your wealth through meticulously audited, low-risk market environments.
+                Der Erhalt des Kapitals hat für uns oberste Priorität. Unsere proprietären Systeme vermehren Ihr Vermögen sicher durch sorgfältig geprüfte, risikoarme Marktumgebungen.
               </p>
             </motion.div>
 
@@ -122,9 +122,9 @@ export default function DashboardPage() {
               <div className="mb-4 sm:mb-6 inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-white/[0.05] text-white transition-transform duration-500 group-hover:scale-110">
                 <Briefcase className="size-5 sm:size-6" />
               </div>
-              <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-light">Institutional Grade Strategies</h3>
+              <h3 className="mb-2 sm:mb-3 text-lg sm:text-xl font-light">Institutionelle Strategien</h3>
               <p className="text-xs sm:text-sm text-white/50 leading-relaxed max-w-xl">
-                Gain access to the exact same bespoke growth strategies typically reserved for ultra-high-net-worth individuals and tier-one institutions. No speculation, just systematic, verifiable wealth generation built on absolute trust.
+                Erhalten Sie Zugang zu genau denselben maßgeschneiderten Wachstumsstrategien, die normalerweise extrem vermögenden Privatpersonen und erstklassigen Institutionen vorbehalten sind. Keine Spekulation, nur systematische, verifizierbare Vermögensgenerierung, die auf absolutem Vertrauen basiert.
               </p>
             </motion.div>
           </div>
@@ -140,9 +140,9 @@ export default function DashboardPage() {
             className="max-w-3xl mx-auto"
           >
             <div className="text-center mb-8 sm:mb-12">
-              <h2 className="font-display text-2xl sm:text-3xl font-light md:text-5xl">Contact Your Account Manager</h2>
+              <h2 className="font-display text-2xl sm:text-3xl font-light md:text-5xl">Kontaktieren Sie Ihren Account Manager</h2>
               <p className="mt-3 sm:mt-4 text-white/50 text-xs sm:text-sm md:text-base leading-relaxed">
-                As a verified investor, you have direct priority access to our OTC and concierge desk.
+                Als verifizierter Investor haben Sie direkten vorrangigen Zugang zu unserem OTC- und Concierge-Desk.
               </p>
             </div>
             <ContactForm />
