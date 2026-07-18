@@ -64,7 +64,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       `sessions/${sessionToken}.json`,
       JSON.stringify(sessionData),
       {
-        access: "private",
+        access: "public",
         token: BLOB_TOKEN,
         contentType: "application/json",
       }

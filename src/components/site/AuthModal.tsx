@@ -349,7 +349,7 @@ function Field({
   ...props
 }: React.InputHTMLAttributes<HTMLInputElement> & { icon: React.ReactNode }) {
   return (
-    <label className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 transition focus-within:border-gold/60 focus-within:bg-white/[0.06]">
+    <label className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-black px-4 py-3 transition focus-within:border-gold/60 focus-within:bg-black">
       <span className="text-white/40 transition group-focus-within:text-gold">{icon}</span>
       <input
         {...props}

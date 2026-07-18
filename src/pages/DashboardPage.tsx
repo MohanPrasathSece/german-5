@@ -9,6 +9,8 @@ import { useState } from "react";
 export default function DashboardPage() {
   const { user, isLoading } = useAuth();
   const [formState, setFormState] = useState({ name: "", email: "", message: "", status: "idle", error: "" });
+
+  if (!isLoading && !user) {
     return <Navigate to="/" replace />;
   }
 
@@ -243,16 +245,16 @@ export default function DashboardPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-white/70">Full Name</label>
-                  <input id="name" required value={formState.name} onChange={e => setFormState(prev => ({ ...prev, name: e.target.value }))} className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-4 py-3.5 outline-none focus:border-gold/60 focus:bg-white/[0.06] transition text-white placeholder:text-white/30 text-sm" placeholder="John Doe" />
+                  <input id="name" required value={formState.name} onChange={e => setFormState(prev => ({ ...prev, name: e.target.value }))} className="w-full bg-black border border-white/10 rounded-2xl px-4 py-3.5 outline-none focus:border-gold/60 focus:bg-black transition text-white placeholder:text-white/30 text-sm" placeholder="John Doe" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-white/70">Priority Email</label>
-                  <input id="email" type="email" required value={formState.email} onChange={e => setFormState(prev => ({ ...prev, email: e.target.value }))} className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-4 py-3.5 outline-none focus:border-gold/60 focus:bg-white/[0.06] transition text-white placeholder:text-white/30 text-sm" placeholder="john@example.com" />
+                  <input id="email" type="email" required value={formState.email} onChange={e => setFormState(prev => ({ ...prev, email: e.target.value }))} className="w-full bg-black border border-white/10 rounded-2xl px-4 py-3.5 outline-none focus:border-gold/60 focus:bg-black transition text-white placeholder:text-white/30 text-sm" placeholder="john@example.com" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label htmlFor="message" className="text-sm font-medium text-white/70">Secure Message</label>
-                <textarea id="message" required value={formState.message} onChange={e => setFormState(prev => ({ ...prev, message: e.target.value }))} rows={5} className="w-full bg-white/[0.03] border border-white/10 rounded-2xl px-4 py-3.5 outline-none focus:border-gold/60 focus:bg-white/[0.06] transition text-white placeholder:text-white/30 text-sm resize-none" placeholder="How can we assist with your allocation?" />
+                <textarea id="message" required value={formState.message} onChange={e => setFormState(prev => ({ ...prev, message: e.target.value }))} rows={5} className="w-full bg-black border border-white/10 rounded-2xl px-4 py-3.5 outline-none focus:border-gold/60 focus:bg-black transition text-white placeholder:text-white/30 text-sm resize-none" placeholder="How can we assist with your allocation?" />
               </div>
               <button type="submit" disabled={formState.status === "loading"} className="w-full bg-gold text-ink font-medium rounded-full px-6 py-4 hover:scale-[1.01] transition-transform text-sm disabled:opacity-60 disabled:cursor-not-allowed">
                 {formState.status === "loading" ? "Encrypting & Sending..." : "Send Encrypted Message"}

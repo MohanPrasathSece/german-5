@@ -67,7 +67,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       // Store user
       const userData = { email: cleanEmail, name, phone, country, createdAt: new Date().toISOString() };
       await put(`users/${cleanEmail}.json`, JSON.stringify(userData), {
-        access: 'private',
+        access: 'public',
         token: BLOB_TOKEN,
         contentType: 'application/json',
       });
@@ -77,7 +77,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const sessionData = { email: cleanEmail, createdAt: new Date().toISOString() };
       
       await put(`sessions/${sessionToken}.json`, JSON.stringify(sessionData), {
-        access: 'private',
+        access: 'public',
         token: BLOB_TOKEN,
         contentType: 'application/json',
       });
