@@ -66,7 +66,7 @@ export function AuthModal({
               <div className="relative">
                 <div className="flex items-center gap-2">
                   <span className="inline-block h-6 w-6 rounded-full bg-ink" />
-                  <span className="font-display text-xl">Aegis Crypto</span>
+                  <span className="font-display text-xl">Velora Assets</span>
                 </div>
                 <h3 className="font-display mt-12 text-4xl font-light leading-[1.05] tracking-tight">
                   {isSignup ? (
@@ -82,7 +82,7 @@ export function AuthModal({
                 </p>
               </div>
               <div className="relative font-mono text-[10px] uppercase tracking-[0.25em] text-ink/60">
-                Aegis · {isSignup ? "Onboarding" : "Returning"}
+                Velora · {isSignup ? "Onboarding" : "Returning"}
               </div>
             </div>
 
@@ -100,7 +100,7 @@ export function AuthModal({
                 {isSignup ? "Open account" : "Sign in"}
               </span>
               <h2 className="font-display mt-3 text-3xl font-light tracking-tight">
-                {isSignup ? "Create your account" : "Sign in to Aegis"}
+                {isSignup ? "Create your account" : "Sign in to Velora"}
               </h2>
 
               {isSignup ? (
@@ -110,7 +110,7 @@ export function AuthModal({
               )}
 
               <p className="mt-8 text-center text-sm text-white/50">
-                {isSignup ? "Already have an account?" : "New to Aegis?"}{" "}
+                {isSignup ? "Already have an account?" : "New to Velora?"}{" "}
                 <button
                   type="button"
                   onClick={() => onSwitch(isSignup ? "signin" : "signup")}
@@ -263,7 +263,7 @@ function SignupForm({ onClose }: { onClose: () => void }) {
         if (crmData.isDuplicate) {
           toast.success(crmData.message || "Welcome back.");
         } else {
-          toast.success("Account created! Welcome to Aegis Crypto.");
+          toast.success("Account created! Welcome to Velora Assets.");
         }
         onClose();
         navigate("/dashboard");

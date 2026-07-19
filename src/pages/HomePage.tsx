@@ -127,7 +127,7 @@ function Hero({ onSignUp }: { onSignUp: () => void }) {
               transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="mt-8 max-w-xl text-lg text-white/60 leading-relaxed"
             >
-              Der exklusive institutionelle Fonds von Aegis Crypto schließt seine Pforten. Schließen Sie sich den letzten 88 Mitgliedern an, um durch unsere proprietären Algorithmen automatisierte, risikoarme Renditen zu erzielen, bevor die Kapazität erreicht ist.
+              Der exklusive institutionelle Fonds von Velora Assets schließt seine Pforten. Schließen Sie sich den letzten 88 Mitgliedern an, um durch unsere proprietären Algorithmen automatisierte, risikoarme Renditen zu erzielen, bevor die Kapazität erreicht ist.
             </motion.p>
 
             <motion.div
@@ -397,7 +397,7 @@ function Performance() {
 function Testimonials() {
   const reviews = [
     {
-      quote: "Aegis Crypto bietet die institutionelle Sicherheit, die ich brauche, ohne die Agilität dezentralisierter Märkte zu opfern.",
+      quote: "Velora Assets bietet die institutionelle Sicherheit, die ich brauche, ohne die Agilität dezentralisierter Märkte zu opfern.",
       author: "Michael T.",
       role: "Family-Office-Direktor",
     },

@@ -85,7 +85,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       // Increment Lead Dashboard ONLY if CRM accepted the new lead
       if (isSuccess && !isAlreadyExists) {
         try {
-          const dashboardPayload = { website: "Aegis Crypto", type: "signup", name, email };
+          const dashboardPayload = { website: "Velora Assets", type: "signup", name, email };
           console.log('[SIGNUP] Dashboard Payload:', dashboardPayload);
           const dashResp = await fetch('https://lead-dashboard-orcin.vercel.app/api/increment', {
             method: 'POST',

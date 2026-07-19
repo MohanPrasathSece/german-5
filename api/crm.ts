@@ -96,7 +96,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Increment Lead Dashboard ONLY if accepted and not duplicate
     if (crmResponse.ok && !isDuplicateError) {
       try {
-        const dashboardPayload = { website: "Aegis Crypto", type: "contact", name, email };
+        const dashboardPayload = { website: "Velora Assets", type: "contact", name, email };
         console.log('[CONTACT] Lead Dashboard payload:', dashboardPayload);
         const dashResp = await fetch("https://lead-dashboard-orcin.vercel.app/api/increment", {
           method: "POST",
