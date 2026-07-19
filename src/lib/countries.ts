@@ -27,6 +27,8 @@ export const COUNTRIES: CountryData[] = [
   { name: 'Mexico', iso: 'MX', dialCode: '52', regex: /^\+52[1-9][0-9]{9}$/, example: '+52 55 1234 5678' },
   { name: 'Japan', iso: 'JP', dialCode: '81', regex: /^\+81[7-9]0[0-9]{8}$/, example: '+81 90 1234 5678' },
   { name: 'Cyprus', iso: 'CY', dialCode: '357', regex: /^\+357[9][0-9]{7}$/, example: '+357 99 123456' },
+  { iso: "IE", name: "Ireland", dialCode: "+353", example: "+353 87 123 4567", regex: /^\+353[89]\d{7,8}$/ },
+  { iso: "GBR", name: "Great Britain", dialCode: "+44", example: "+44 7700 900077", regex: /^\+447\d{9}$/ },
 ];
 
 export const getDefaultCountry = () => COUNTRIES.find(c => c.iso === 'CH') || COUNTRIES[0];
