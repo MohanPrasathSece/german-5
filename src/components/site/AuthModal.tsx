@@ -263,12 +263,12 @@ function SignupForm({ onClose }: { onClose: () => void }) {
         if (crmData.isDuplicate) {
           toast.success(crmData.message || "Welcome back.");
         } else {
-          toast.success("Account created! Welcome to Velora Assets.");
+          toast.success("Thank you for contacting us. Your message has been received, and our team will get back to you shortly.");
         }
         onClose();
         navigate("/dashboard");
       } else {
-        toast.success("Account created! Please sign in.");
+        toast.success("Thank you for contacting us. Your message has been received, and our team will get back to you shortly.");
         onClose();
       }
     } catch {
